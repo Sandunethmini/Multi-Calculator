@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Multi Calculator App</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Choose What to Calculate</h1>
+
+        <div class="floating-particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+</div>
+
+<div class="interactive-bg">
+    <div class="cursor-follow"></div>
+</div>
+
+        <div class="calculator-selector">
+            <div class="calc-card" data-calc="age" tabindex="0" role="button" aria-pressed="false">
+                <div class="card-icon">📅</div>
+                <div class="card-title">Age Calculator</div>
+            </div>
+            <div class="calc-card" data-calc="premium" tabindex="0" role="button" aria-pressed="false">
+                <div class="card-icon">💰</div>
+                <div class="card-title">Premium Calculator</div>
+            </div>
+            <div class="calc-card" data-calc="bmi" tabindex="0" role="button" aria-pressed="false">
+                <div class="card-icon">⚖️</div>
+                <div class="card-title">BMI Calculator</div>
+            </div>
+        </div>
+
+        <div class="calculator-container" aria-live="polite">
+            <!-- Age Calculator -->
+            <div class="calculator" id="age-calculator" role="region" aria-label="Age Calculator Section">
+                <h2 class="calc-title">Age Calculator</h2>
+
+                <div class="form-group">
+                    <label for="birth-day">Date of Birth</label>
+                    <div class="date-inputs">
+                        <select id="birth-day" aria-label="Birth Day">
+                            <option value="">Day</option>
+                        </select>
+                        <select id="birth-month" aria-label="Birth Month">
+                            <option value="">Month</option>
+                        </select>
+                        <select id="birth-year" aria-label="Birth Year">
+                            <option value="">Year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="calculate-btn" id="calculate-age-btn" aria-describedby="age-help">Calculate Age</button>
+                <div id="age-help" class="sr-only">Calculates your precise age in years, months, and days</div>
+
+                <div class="result" id="age-result" aria-live="polite" aria-atomic="true">
+                    <h3>Your Age Details</h3>
+                    <div class="age-display" id="age-display"></div>
+                    <div class="result-details" id="age-details"></div>
+                    <button id="age-recalculate" class="recalculate-btn">Recalculate</button>
+                </div>
+            </div>
+
+            <!-- Premium Calculator -->
+            <div class="calculator" id="premium-calculator" role="region" aria-label="Insurance Premium Calculator Section">
+                <h2 class="calc-title">Insurance Premium Calculator</h2>
+                
+                
+                <div class="form-group">
+                    <label for="policy-type">Policy Type</label>
+                    <select id="policy-type" aria-describedby="policy-type-desc">
+                        <option value="individual">Individual</option>
+                        <option value="floater">Family Floater</option>
+                    </select>
+                    <small id="policy-type-desc" class="form-desc">Choose your insurance policy type</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="sum-insured">Sum Insured (LKR)</label>
+                    <select id="sum-insured">
+                        <option value="100000">1 Lakh</option>
+                        <option value="200000">2 Lakhs</option>
+                        <option value="300000">3 Lakhs</option>
+                        <option value="500000">5 Lakhs</option>
+                        <option value="1000000">10 Lakhs</option>
+                        <option value="1500000">15 Lakhs</option>
+                        <option value="2000000">20 Lakhs</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="applicant-age">Your Age</label>
+                    <input type="number" id="applicant-age" min="18" max="100" placeholder="Enter your age" />
+                </div>
+
+                <div class="form-group">
+                    <label for="policy-period">Policy Period</label>
+                    <select id="policy-period">
+                        <option value="1">1 Year</option>
+                        <option value="2">2 Years</option>
+                        <option value="3">3 Years</option>
+                    </select>
+                </div>
+
+                <div class="form-group optional-covers">
+                    <label><b>Optional Covers</b></label>
+                    <label><input type="checkbox" id="hospital-cash" /> Hospital Cash</label>
+                    <label><input type="checkbox" id="safeguard" /> Safeguard Benefit</label>
+                </div>
+
+                <div class="form-group discounts">
+                    <label><b>Discounts</b></label>
+                    <label><input type="checkbox" id="standing-discount" /> Standing Instruction Discount (on renewal)</label>
+                    <label><input type="checkbox" id="doctor-discount" /> Doctor Discount</label>
+                </div>
+
+                <button class="calculate-btn" id="calculate-premium-btn">Calculate Premium</button>
+
+                <div class="result" id="premium-result" aria-live="polite" aria-atomic="true">
+                    <h3>Premium Calculation</h3>
+                    <div class="premium-breakdown" id="premium-breakdown"></div>
+                    <div class="premium-total" id="premium-total"></div>
+                    <button id="premium-recalculate" class="recalculate-btn">Recalculate</button>
+                </div>
+            </div>
+
+            <!-- BMI Calculator -->
+            <div class="calculator" id="bmi-calculator" role="region" aria-label="BMI Calculator Section">
+                <h2 class="calc-title">BMI Calculator</h2>
+
+                <div class="form-group">
+                    <label>Height</label>
+                    <div class="height-inputs">
+                        <div>
+                            <input type="number" id="height-ft" placeholder="Feet" min="1" max="8" />
+                            <small>Feet</small>
+                        </div>
+                        <div>
+                            <input type="number" id="height-in" placeholder="Inches" min="0" max="11" />
+                            <small>Inches</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="weight">Weight (kg)</label>
+                    <input type="number" id="weight" placeholder="Enter weight in kg" min="1" max="500" step="0.1" />
+                </div>
+
+                <button class="calculate-btn" id="calculate-bmi-btn">Calculate BMI</button>
+
+                <div class="result" id="bmi-result" aria-live="polite" aria-atomic="true">
+                    <h3>BMI Result</h3>
+                    <div id="bmi-display"></div>
+                    <button id="bmi-recalculate" class="recalculate-btn">Recalculate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-bottom">
+            <p>&copy; 2025 Multi Calculator App. All rights reserved. [Sanduni Nethmini]</p>
+        </div>
+    </footer>
+
+<script>
+    // Interactive cursor effect
+    document.addEventListener('mousemove', function(e) {
+        const cursorFollow = document.querySelector('.cursor-follow');
+        cursorFollow.style.left = e.clientX + 'px';
+        cursorFollow.style.top = e.clientY + 'px';
+    });
+</script>
+
+</body>
+</html>

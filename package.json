@@ -1,0 +1,27 @@
+{
+  "name": "multi-calculator-app",
+  "version": "1.0.0",
+  "description": "A multi-calculator app with Age, Premium, and BMI calculators",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve --mode development",
+    "start": "webpack serve --mode development --open",
+    "build-ts": "tsc",
+    "watch": "tsc -w"
+  },
+  "keywords": ["calculator", "typescript", "age", "bmi", "insurance"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.3",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.0.0",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}
